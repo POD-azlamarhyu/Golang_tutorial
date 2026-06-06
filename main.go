@@ -84,13 +84,6 @@ func hogeHoge(){
 	log.Println("This is a log message.")
 }
 
-type Region struct {
-	Nation string
-	Area string
-	Address string
-	Name string
-	Population int
-}
 
 func main() {
 	fmt.Println("Hello, World!")
@@ -100,36 +93,4 @@ func main() {
 	fmt.Printf("Current time: %s\n", time.Now().Format(time.RFC1123))
 	fmt.Println()
 
-	region := Region{
-		Nation: "日本",
-		Area: "関東",
-		Address: "東京都 千代田区",
-		Name: "東京",
-		Population: 13960000,
-	}
-
-	fmt.Printf("Region: %+v\n", region)
-	fmt.Printf("Nation: %s\n", region.Nation)
-	fmt.Printf("Area: %s\n", region.Area)
-	fmt.Printf("Address: %s\n", region.Address)
-	fmt.Printf("Name: %s\n", region.Name)
-	fmt.Printf("Population: %d\n", region.Population)
-
-	p := &Region{
-		Nation: "日本",
-		Area: "北海道",
-		Address: "北海道 札幌市",
-		Name: "大通り",
-		Population: 1952000,
-	}
-
-	fmt.Printf("Region: %+v\n", p)
-	fmt.Printf("Nation: %s\n", p.Nation)
-	fmt.Printf("Area: %s\n", p.Area)
-	fmt.Printf("Address: %s\n", p.Address)
-	fmt.Printf("Name: %s\n", p.Name)
-	fmt.Printf("Population: %d\n", p.Population)
-
-	p.Address = "北海道 札幌市 中央区"
-	fmt.Printf("Updated Address: %s\n", p.Address)
 }
