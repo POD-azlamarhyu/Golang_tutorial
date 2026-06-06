@@ -1,0 +1,128 @@
+package main
+
+import (
+	"fmt"
+	"os"
+	"path/filepath"
+	"runtime"
+	"time"
+	"bufio"
+	"strings"
+	"strconv"
+)
+
+func hogeHoge(){
+		// Get current working directory
+	cwd, err := os.Getwd()
+	if err != nil {
+		fmt.Println("Error getting current working directory:", err)
+		return
+	}
+	fmt.Printf("Current working directory: %s\n", cwd)
+
+	// List files in current directory
+	files, err := os.ReadDir(cwd)
+	if err != nil {
+		fmt.Println("Error reading directory:", err)
+		return
+	}
+	fmt.Println("Files in current directory:")
+	for _, file := range files {
+		fmt.Println(" -", file.Name())
+	}
+
+	// Create a new file and write to it
+	newFilePath := filepath.Join(cwd, "example.txt")
+	newFile, err := os.Create(newFilePath)
+	if err != nil {
+		fmt.Println("Error creating file:", err)
+		return
+	}
+	defer newFile.Close()
+
+	_, err = newFile.WriteString("This is an example file created by Go.\n")
+	if err != nil {
+		fmt.Println("Error writing to file:", err)
+		return
+	}
+	fmt.Printf("File '%s' created and written to successfully.\n", newFilePath)
+
+	// Read the contents of the file
+	readFile, err := os.Open(newFilePath)
+	if err != nil {
+		fmt.Println("Error opening file:", err)
+		return
+	}
+	defer readFile.Close()
+
+	scanner := bufio.NewScanner(readFile)
+	fmt.Printf("Contents of '%s':\n", newFilePath)
+	for scanner.Scan() {
+		fmt.Println(scanner.Text())
+	}
+
+	if err := scanner.Err(); err != nil {
+		fmt.Println("Error reading file:", err)
+		return
+	}
+
+	// Example of string manipulation
+	sampleString := "Go is a great programming language!"
+	words := strings.Fields(sampleString)
+	fmt.Printf("Words in sample string: %v\n", words)
+
+	// Example of converting string to integer
+	numStr := "42"
+	num, err := strconv.Atoi(numStr)
+	if err != nil {
+		fmt.Println("Error converting string to integer:", err)
+		return
+	}
+	fmt.Printf("Converted number: %d\n", num)
+}
+
+var (
+	v bool = true
+	w string = "Hello, Go!"
+	x float32 = 0.481
+	y float64 = 2.71828
+	z int = 2686
+)
+
+func main() {
+	fmt.Println("Hello, World!")
+
+	fmt.Printf("Go version: %s\n", runtime.Version())
+	fmt.Println(runtime.GOOS)
+	fmt.Printf("Current time: %s\n", time.Now().Format(time.RFC1123))
+
+	var a int = 10
+	var b float64 = 1.34
+	var c string = "Go programming"
+	var d bool = true
+
+	e := 666
+	f := 2.71828
+	g := "HogeFuga"
+	h := false
+	fmt.Println()
+	fmt.Printf("Integer: %d (%T)\n", a, a)
+	fmt.Printf("Float: %.2f (%T)\n", b, b)
+	fmt.Printf("String: %s (%T)\n", c, c)
+	fmt.Printf("Boolean: %t (%T)\n\n", d, d)
+
+	fmt.Printf("Integer: %d (%T)\n", e, e)
+	fmt.Printf("Float: %.5f (%T)\n", f, f)
+	fmt.Printf("String: %s (%T)\n", g, g)
+	fmt.Printf("Boolean: %t (%T)\n", h, h)
+	fmt.Println()
+
+	fmt.Printf("Variable v: %t (%T)\n", v, v)
+	fmt.Printf("Variable w: %s (%T)\n", w, w)
+	fmt.Printf("Variable x: %.3f (%T)\n", x, x)
+	fmt.Printf("Variable y: %.5f (%T)\n", y, y)
+	fmt.Printf("Variable z: %d (%T)\n", z, z)
+	fmt.Println()
+
+	
+}

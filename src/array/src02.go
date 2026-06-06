@@ -11,7 +11,7 @@ func main() {
 	arrayFloat[0] = 4.29
 	arrayFloat[1] = 3.3
 
-	var arrayString []string = [] string{"東北電力","七十七銀行","TTK","仙台市営地下鉄","JR東日本仙台支社","やまや","サトー商会"}
+	var arrayString []string = [] string{"札幌", "仙台", "東京", "名古屋", "大阪", "広島", "福岡"}
 	
 	sliceStr := arrayString[:]
 	fmt.Println(arrayFloat)

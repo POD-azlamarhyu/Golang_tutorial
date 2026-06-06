@@ -11,7 +11,7 @@ func main()  {
 	var size int = 10
 	var arrayInt[10] int
 
-	arrayString := [...] string{"JR北海道","ニトリ","セイコーマート","北海道拓殖銀行","雪印","サッポロビール","ツルハホールディングス","札幌証券取引所"}
+	arrayString := [...] string{"札幌", "仙台", "東京", "名古屋", "大阪", "広島", "福岡"}
 
 	fmt.Println(globalArray)
 	
