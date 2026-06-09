@@ -1,19 +1,20 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"runtime"
-	"time"
-	"bufio"
-	"strings"
 	"strconv"
-	"log"
+	"strings"
+	"time"
+
 )
 
-func hogeHoge(){
-		// Get current working directory
+func hogeHoge() {
+	// Get current working directory
 	cwd, err := os.Getwd()
 	if err != nil {
 		fmt.Println("Error getting current working directory:", err)
@@ -86,11 +87,14 @@ func hogeHoge(){
 
 
 func main() {
+	startTime := time.Now()
 	fmt.Println("Hello, World!")
 
 	fmt.Printf("Go version: %s\n", runtime.Version())
-	fmt.Println("OS: ",runtime.GOOS)
+	fmt.Println("OS: ", runtime.GOOS)
 	fmt.Printf("Current time: %s\n", time.Now().Format(time.RFC1123))
 	fmt.Println()
 
+	elapsedTime := time.Since(startTime)
+	fmt.Printf("Execution time: %s\n", elapsedTime)
 }
