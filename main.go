@@ -3,14 +3,15 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"log"
+	"net/http"
 	"os"
 	"path/filepath"
 	"runtime"
 	"strconv"
 	"strings"
 	"time"
-
 )
 
 func hogeHoge() {
@@ -85,7 +86,6 @@ func hogeHoge() {
 	log.Println("This is a log message.")
 }
 
-
 func main() {
 	startTime := time.Now()
 	fmt.Println("Hello, World!")
@@ -95,6 +95,21 @@ func main() {
 	fmt.Printf("Current time: %s\n", time.Now().Format(time.RFC1123))
 	fmt.Println()
 
+	response, err := http.Get("http://example.com")
+	if err != nil {
+		log.Fatalf("Error making HTTP request: %v", err)
+	}
+	defer response.Body.Close()
+
+	body, err := io.ReadAll(response.Body)
+	if err != nil {
+		log.Fatalf("Error reading response body: %v", err)
+	}
+
+	fmt.Printf("Response from example.com:\n%s\n", string(body))
+	fmt.Println()
+
+	fmt.Println("####################################################################################")
 	elapsedTime := time.Since(startTime)
 	fmt.Printf("Execution time: %s\n", elapsedTime)
 }
